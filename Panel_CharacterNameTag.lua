@@ -867,11 +867,11 @@ local settingName = function( actorKeyRaw, targetPanel, actorProxyWrapper )
 
 
 		local selfPlayerLevel = getSelfPlayer():get():getLevel()
-		local hpRate = actorProxy:getHp() * 100 / actorProxy:getMaxHp()
+		local hpRate = math.floor(actorProxy:getHp() * 100 / actorProxy:getMaxHp() + 0.5)
 
 		
 
-		textName = "<PAColor0x".. getColorBySelfPlayerLevel(level) ..">Lv".. playerActorProxyWrapper:get():getLevel() .. ".<PAOldColor> " .. playerActorProxyWrapper:getName()  .. "<PAColor0x".. getColorBySelfPlayerLevel(level) .."> ".. playerActorProxyWrapper:get():getHp() .. " / " .. playerActorProxyWrapper:get():getMaxHp() .. " " .. hpRate .." % <PAOldColor>"
+		textName = "<PAColor0x".. getColorBySelfPlayerLevel(level) ..">Lv".. playerActorProxyWrapper:get():getLevel() .. ".<PAOldColor> " .. playerActorProxyWrapper:getName()  .. "<PAColor0x".. getColorBySelfPlayerLevel(level) .."> ".. playerActorProxyWrapper:get():getHp() .. " / " .. playerActorProxyWrapper:get():getMaxHp() .. " " .. hpRate .."% <PAOldColor>"
 
 		--textName = actorProxyWrapper:getName()
 
@@ -1648,6 +1648,8 @@ local settingMonsterName = function( actorKeyRaw, targetPanel, actorProxyWrapper
 	local monsterLevel = monsterActorProxyWrapper:get():getCharacterStaticStatus().level
 
 	local selfPlayerLevel = getSelfPlayer():get():getLevel()
+
+	
 
 	setMonsterNameColor( selfPlayerLevel, monsterLevel, nameTag, monsterActorProxyWrapper:get():isDarkSpiritMonster() )
 
